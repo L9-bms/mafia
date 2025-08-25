@@ -62,7 +62,7 @@ class MafiaServer:
         self.rooms[room_code] = room
         print(f"Created room {room_code}")
 
-        player: Player = Player(websocket, name)
+        player: Player = Player(websocket, name[:20])
         room.add_player(player)
 
         try:
@@ -92,7 +92,7 @@ class MafiaServer:
             await self.error(websocket, "Game in progress.")
             return False
 
-        player: Player = Player(websocket, name)
+        player: Player = Player(websocket, name[:20])
         room.add_player(player)
 
         await room.broadcast(
