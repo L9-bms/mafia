@@ -149,7 +149,7 @@ export default function GameActions({
                                 </span>
                             ))}
                         </div>
-                        {players.length >= 6 && playerInfo.is_room_creator && (
+                        {players.length >= 6 && playerInfo.is_host && (
                             <Button
                                 className="mt-2 p-2 bg-green-500 text-white rounded hover:bg-green-600"
                                 onClick={onStartGame}
@@ -162,42 +162,40 @@ export default function GameActions({
                                 Need at least 6 players to start
                             </p>
                         )}
-                        {players.length >= 6 && !playerInfo.is_room_creator && (
+                        {players.length >= 6 && !playerInfo.is_host && (
                             <p className="text-sm text-gray-500">
-                                Waiting for room creator to start the game
+                                Waiting for host to start the game
                             </p>
                         )}
                     </div>
                 )}
 
-                {gameState.phase === "finished" &&
-                    playerInfo.is_room_creator && (
-                        <div className="text-center">
-                            <div className="flex flex-col gap-2">
-                                <Button
-                                    className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                    onClick={onReplayGame}
-                                >
-                                    Replay Game
-                                </Button>
-                                <Button
-                                    className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                                    onClick={onDisbandRoom}
-                                >
-                                    Disband Room
-                                </Button>
-                            </div>
+                {gameState.phase === "finished" && playerInfo.is_host && (
+                    <div className="text-center">
+                        <div className="flex flex-col gap-2">
+                            <Button
+                                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                onClick={onReplayGame}
+                            >
+                                Replay Game
+                            </Button>
+                            <Button
+                                className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                                onClick={onDisbandRoom}
+                            >
+                                Disband Room
+                            </Button>
                         </div>
-                    )}
+                    </div>
+                )}
 
-                {gameState.phase === "finished" &&
-                    !playerInfo.is_room_creator && (
-                        <div className="text-center">
-                            <p className="text-sm text-gray-500">
-                                Waiting for host to replay or disband...
-                            </p>
-                        </div>
-                    )}
+                {gameState.phase === "finished" && !playerInfo.is_host && (
+                    <div className="text-center">
+                        <p className="text-sm text-gray-500">
+                            Waiting for host to replay or disband...
+                        </p>
+                    </div>
+                )}
             </div>
         </div>
     );

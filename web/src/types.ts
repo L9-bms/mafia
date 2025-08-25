@@ -13,7 +13,7 @@ export interface PlayerInfo {
     is_alive: boolean;
     can_act_at_night: boolean;
     can_chat: boolean;
-    is_room_creator: boolean;
+    is_host: boolean;
     has_voted: boolean;
     has_acted: boolean;
 }

@@ -419,7 +419,7 @@ class Room:
             "is_alive": player.is_alive,
             "can_act_at_night": player.is_night_role(),
             "can_chat": isinstance(player.role, Mafia) if GamePhase.NIGHT else True,
-            "is_room_creator": player.id == self.host,
+            "is_host": player.id == self.host,
             "has_voted": player.id in self.votes,
             "has_acted": player.id in self.night_actions,
         }
