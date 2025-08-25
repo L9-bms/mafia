@@ -14,6 +14,7 @@ export default function PlayersList({ players }: PlayersListProps) {
                         key={player.id}
                         className={`mb-1 ${!player.is_alive ? "text-gray-500 line-through" : ""}`}
                     >
+                        {player.is_host && " (HOST)"}
                         {player.name}
                         {!player.is_alive && " (DEAD)"}
                     </div>

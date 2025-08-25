@@ -407,6 +407,7 @@ class Room:
             "game_result": self.game_result
             if self.phase == GamePhase.FINISHED
             else None,
+            "is_host": player.id == self.host,
         }
         await player.send(state)
 

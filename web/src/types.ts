@@ -3,6 +3,7 @@ export interface Player {
     name: string;
     is_alive: boolean;
     role?: string;
+    is_host: boolean;
 }
 
 export interface PlayerInfo {
