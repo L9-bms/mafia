@@ -43,7 +43,7 @@ class Mafia(NightRole):
 
     @property
     def description(self) -> str:
-        return "Your goal is to eliminate all non-mafia. You can kill someone each night and communicate with other mafia."
+        return "Your goal is to eliminate all non-mafia. You can kill someone each night and communicate with other mafia. (The chat during the night is only shown to other mafia.)"
 
     def perform_night_action(self, room: "Room", actor_id: str, target_id: str) -> None:
         if target_id in room.players:
