@@ -383,7 +383,7 @@ class Room:
                 await self.broadcast_to_mafia(
                     {"type": "chat_message", "chat": chat_message}
                 )
-        elif self.phase == GamePhase.DAY:
+        else:
             self.chat_log.append(chat_message)
             await self.broadcast({"type": "chat_message", "chat": chat_message})
 
@@ -419,7 +419,9 @@ class Room:
             "role_description": player.role.description if player.role else None,
             "is_alive": player.is_alive,
             "can_act_at_night": player.is_night_role(),
-            "can_chat": isinstance(player.role, Mafia) if GamePhase.NIGHT else True,
+            "can_chat": isinstance(player.role, Mafia)
+            if self.phase == GamePhase.NIGHT
+            else True,
             "is_host": player.id == self.host,
             "has_voted": player.id in self.votes,
             "has_acted": player.id in self.night_actions,

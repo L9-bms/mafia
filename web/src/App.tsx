@@ -60,7 +60,7 @@ export default function App() {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen p-4">
+        <div className="flex justify-center items-center p-4 h-screen">
             <div className="space-y-4">
                 <div className="text-center">
                     <h1 className="text-3xl font-bold">Mafia Game</h1>

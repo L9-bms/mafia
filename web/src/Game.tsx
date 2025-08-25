@@ -76,7 +76,7 @@ export default function Game({
         <div
             className={`flex flex-col h-screen ${!playerInfo.is_alive ? "opacity-75 bg-gray-50" : ""}`}
         >
-            <div className="border-b">
+            <div className="flex-none border-b">
                 <RoomInfo roomCode={roomCode} />
 
                 <PlayerStatus
@@ -103,11 +103,11 @@ export default function Game({
                 <Error error={error} />
             </div>
 
-            <div className="flex flex-1 bg-gray-50">
-                <div className="w-1/3 border-r">
+            <div className="flex flex-1 min-h-0 bg-gray-50">
+                <div className="w-1/3 border-r min-h-0 flex flex-col">
                     <PlayersList players={players} />
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 min-h-0 flex flex-col">
                     <ChatPanel
                         chat={chat}
                         playerInfo={playerInfo}

@@ -33,11 +33,11 @@ export default function ChatPanel({
     };
 
     return (
-        <div className="flex flex-col flex-1 p-4 h-full">
-            <h3 className="font-bold mb-4">Chat</h3>
+        <div className="flex flex-col min-h-0 h-full p-4">
+            <h3 className="flex-none font-bold mb-4">Chat</h3>
             <div
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto mb-4 border p-3 rounded bg-gray-50"
+                className="flex-1 min-h-0 overflow-y-auto mb-4 border p-3 rounded bg-gray-50"
             >
                 {chat.map((msg, index) => (
                     <div key={index} className="mb-1">
@@ -54,10 +54,10 @@ export default function ChatPanel({
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleChatSubmit} className="flex gap-2">
+            <form onSubmit={handleChatSubmit} className="flex gap-2 flex-none">
                 <Input
                     type="text"
-                    className="flex-1 p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100 w-full"
+                    className="flex-1 p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
                     placeholder={
                         !playerInfo.is_alive
                             ? "You are dead"
